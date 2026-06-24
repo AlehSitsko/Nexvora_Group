@@ -1,34 +1,71 @@
 # Nexvora Group Website
 
-A responsive B2B business website for a Pennsylvania-based wholesale purchasing and e-commerce retail company focused on supplier partnerships, MAP compliance, brand protection, and contact conversion.
+A responsive B2B business website for a Pennsylvania-based wholesale purchasing and e-commerce retail company, focused on supplier partnerships, MAP compliance, brand protection, and professional contact conversion.
+
+---
+
+## Live Preview
+
+> Preview deployment coming soon via Vercel.
+> Screenshots will be added after preview deployment — see `docs/screenshots/`.
+
+---
+
+## Project Status
+
+**Preview-ready.** The site is complete as a client-facing preview and portfolio project.
+
+- Contact form uses **frontend-only preview behavior** (no real emails sent yet)
+- WhatsApp number is a placeholder — will be activated when the client provides a number
+- Google Analytics ID is a placeholder — ready to activate when the client provides a GA4 ID
+- Domain `nexvoragroup-pa.com` is registered. Production deployment to Vercel is planned as the next step
+
+---
 
 ## Overview
 
-Nexvora Group is a Pennsylvania-based e-commerce retail company focused on wholesale purchasing and professional online retail operations. This website presents the company to brands, manufacturers, and authorized distributors as a serious, long-term B2B retail partner.
+Nexvora Group needed a professional B2B website to support outreach to brands, manufacturers, and authorized distributors. The site presents the company as a reliable, long-term wholesale retail partner — not a consumer e-commerce store.
 
-The site is built as a custom frontend project (React + Vite) and is intended to be deployed on **Vercel** (or Netlify as an alternative) with the custom domain **nexvoragroup-pa.com** managed through Squarespace DNS.
+The site avoids all consumer e-commerce language and visuals. No product cards, no prices, no ratings, no marketplace references.
 
 ---
 
 ## Features
 
-- Multi-page React application (Home, About, MAP Policy, Contact)
-- Dark corporate hero section with overlay
-- Responsive layout — mobile, tablet, desktop
-- Contact inquiry form (frontend-ready; easy to connect to Formspree / Netlify Forms / EmailJS)
-- WhatsApp CTA button (configured via a single variable)
-- Google Analytics placeholder (enabled by adding a Measurement ID)
+- Multi-page responsive layout — Home, About, MAP Policy, Contact
+- Dark corporate hero section with professional city background
+- Supplier-focused B2B messaging throughout
+- MAP & Brand Protection dedicated page
+- Contact inquiry form (UI complete, ready for backend integration)
+- WhatsApp CTA — activates automatically when number is added to config
+- Google Analytics — activates automatically when GA4 ID is added to config
 - SEO meta titles and descriptions per page
-- No marketplace, no product listings, no consumer e-commerce elements
+- Open Graph metadata
+- Reusable React components
+- Single config file for all editable content
+- Vercel and Netlify deployment-ready
 
 ---
 
 ## Tech Stack
 
-- React 18
-- Vite
-- React Router DOM
-- Plain CSS with CSS Variables (no heavy UI frameworks)
+| Technology | Purpose |
+|---|---|
+| React 18 | UI framework |
+| Vite | Build tool and dev server |
+| React Router DOM | Client-side routing |
+| Plain CSS with CSS Variables | Styling — no heavy UI framework |
+
+---
+
+## Pages
+
+| Page | Route | Description |
+|---|---|---|
+| Home | `/` | Hero, Who We Are, Values, Wholesale Partnerships, CTA |
+| About | `/about` | Company story and business principles |
+| MAP Policy | `/map-policy` | MAP compliance and brand protection policy |
+| Contact | `/contact` | Contact info sidebar and inquiry form |
 
 ---
 
@@ -36,29 +73,30 @@ The site is built as a custom frontend project (React + Vite) and is intended to
 
 ```
 src/
-  assets/           # Static assets
-  components/       # Reusable UI components
-    Header.jsx / Header.css
-    Footer.jsx / Footer.css
-    ValueCard.jsx / ValueCard.css
-    ContactForm.jsx / ContactForm.css
-    SEO.jsx
-  pages/            # Page components
+  components/
+    Header.jsx / Header.css       — Fixed navigation with mobile menu
+    Footer.jsx / Footer.css       — Site footer with nav and contact
+    ValueCard.jsx / ValueCard.css — Reusable value/feature card
+    ContactForm.jsx / ContactForm.css — Validated contact form
+    SEO.jsx                       — Per-page title and meta description
+  pages/
     Home.jsx / Home.css
     About.jsx / About.css
     MapPolicy.jsx / MapPolicy.css
     Contact.jsx / Contact.css
   data/
-    siteConfig.js   # All editable content and configuration
+    siteConfig.js    — All editable content and configuration
   styles/
-    global.css      # Global CSS variables and base styles
-  App.jsx
+    global.css       — CSS variables, reset, base styles
+  App.jsx            — Router, analytics init, scroll-to-top
   main.jsx
 public/
   favicon.svg
-index.html
-vercel.json         # SPA routing for Vercel
-netlify.toml        # SPA routing for Netlify
+docs/
+  screenshots/       — Screenshots added after deployment
+index.html           — OG tags and base meta
+vercel.json          — SPA routing for Vercel
+netlify.toml         — SPA routing for Netlify
 ```
 
 ---
@@ -66,10 +104,14 @@ netlify.toml        # SPA routing for Netlify
 ## How to Run Locally
 
 ```bash
+# Clone the repository
+git clone https://github.com/AlehSitsko/Nexvora_Group.git
+cd Nexvora_Group
+
 # Install dependencies
 npm install
 
-# Start development server
+# Start the development server
 npm run dev
 ```
 
@@ -83,9 +125,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 npm run build
 ```
 
-The production-ready files will be in the `dist/` folder.
-
-To preview the production build locally:
+Output goes to the `dist/` folder. To preview the production build locally:
 
 ```bash
 npm run preview
@@ -93,142 +133,138 @@ npm run preview
 
 ---
 
-## Deployment to Vercel (Recommended)
+## Preview Form Behavior
 
-1. Push the project to a GitHub repository.
-2. Go to [vercel.com](https://vercel.com) and create a new project.
-3. Import the GitHub repository.
-4. Vercel will auto-detect Vite. Use these settings if needed:
-   - **Framework Preset:** Vite
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-5. Click **Deploy**.
-6. After deployment, go to **Settings → Domains** and add `nexvoragroup-pa.com`.
-7. Vercel will provide DNS records to add to your domain registrar (Squarespace).
+The contact form currently uses **frontend-only preview behavior**.
 
-The `vercel.json` file is already included to handle SPA client-side routing.
+- It validates all required fields on the client side
+- On submit, it simulates a short delay and shows a success message
+- It does **not** send any real emails
+- It does **not** make any network requests when `formEndpoint` is empty
 
----
+This is intentional for the client preview stage. The form is prepared for future integration.
 
-## Deployment to Netlify (Alternative)
-
-1. Push the project to a GitHub repository.
-2. Go to [netlify.com](https://netlify.com) and create a new site from Git.
-3. Connect the repository and use these settings:
-   - **Build Command:** `npm run build`
-   - **Publish Directory:** `dist`
-4. Click **Deploy site**.
-5. After deployment, go to **Domain settings** and add `nexvoragroup-pa.com`.
-6. Netlify will provide DNS records.
-
-The `netlify.toml` file is already included to handle SPA client-side routing.
+Future integration options:
+- **Formspree** — set `formEndpoint` in `siteConfig.js` to your Formspree URL
+- **Netlify Forms** — add `data-netlify="true"` to the form element
+- **EmailJS** — add SDK call inside the `handleSubmit` function in `ContactForm.jsx`
+- **Custom backend** — replace the fetch call with your own endpoint
 
 ---
 
-## Custom Domain Setup with Squarespace DNS
+## Configuration
 
-The domain `nexvoragroup-pa.com` is registered and managed in **Squarespace**. The website itself is hosted on **Vercel** (or Netlify). You only need to point the DNS to the hosting provider.
+All editable site content lives in [`src/data/siteConfig.js`](src/data/siteConfig.js).
 
-### Steps:
-
-1. Deploy the site to Vercel or Netlify as described above.
-2. Add `nexvoragroup-pa.com` as a custom domain in Vercel/Netlify.
-3. The hosting platform will display required DNS records (A record, CNAME, or TXT for verification).
-4. Log in to **Squarespace → Domains → nexvoragroup-pa.com → DNS Settings**.
-5. Add or update the DNS records provided by Vercel/Netlify:
-   - **A record** — typically points `@` (root domain) to a Vercel/Netlify IP address
-   - **CNAME record** — typically points `www` to a Vercel/Netlify hostname
-   - **TXT record** — for domain ownership verification (if required)
-6. Save changes and wait for DNS propagation (usually 10–60 minutes, up to 48 hours).
-7. Verify that both URLs work:
-   - `https://nexvoragroup-pa.com`
-   - `https://www.nexvoragroup-pa.com`
-
-> **Note:** Do not hardcode the exact DNS values here — always copy the values shown in your Vercel or Netlify dashboard for your specific deployment.
-
----
-
-## How to Update Site Content
-
-All editable content is centralized in **`src/data/siteConfig.js`**:
-
-- Company name, email, location
-- WhatsApp number
-- Google Analytics Measurement ID
-- Navigation links
-- Contact form endpoint
-- SEO titles and meta descriptions per page
-
-Page text content lives in the individual page files:
-- `src/pages/Home.jsx`
-- `src/pages/About.jsx`
-- `src/pages/MapPolicy.jsx`
-- `src/pages/Contact.jsx`
+| Field | Description |
+|---|---|
+| `companyName` | Company display name |
+| `email` | Contact email address |
+| `location` | Company location |
+| `whatsappNumber` | WhatsApp number — leave `""` to hide button |
+| `googleAnalyticsId` | GA4 Measurement ID — leave `""` to disable |
+| `formEndpoint` | Form backend URL — leave `""` for preview behavior |
+| `navLinks` | Navigation menu items |
+| `seo` | Per-page title and meta description |
 
 ---
 
 ## How to Replace WhatsApp Number
 
-1. Open `src/data/siteConfig.js`.
-2. Find the `whatsappNumber` field.
-3. Replace the empty string with the full international number:
+1. Open `src/data/siteConfig.js`
+2. Set `whatsappNumber` to the full international number:
 
 ```js
 whatsappNumber: "+12155550100",
 ```
 
-Use the format `+` followed by country code and number, no spaces or dashes.
+The WhatsApp button and link will appear automatically across the site.
 
-The WhatsApp button and link will appear automatically once a number is set.
+If left empty (`""`), the site shows **"WhatsApp available upon request"** — no broken links or raw placeholders.
 
 ---
 
 ## How to Add Google Analytics
 
-1. Create a Google Analytics 4 property at [analytics.google.com](https://analytics.google.com).
-2. Copy your **Measurement ID** (format: `G-XXXXXXXXXX`).
-3. Open `src/data/siteConfig.js`.
-4. Find the `googleAnalyticsId` field and insert your ID:
+1. Create a Google Analytics 4 property at [analytics.google.com](https://analytics.google.com)
+2. Copy your Measurement ID (format: `G-XXXXXXXXXX`)
+3. Open `src/data/siteConfig.js` and set:
 
 ```js
 googleAnalyticsId: "G-XXXXXXXXXX",
 ```
 
-Analytics will load automatically on the next deployment. No other changes are needed.
+Analytics loads automatically. No other changes needed.
 
 ---
 
-## How to Connect the Contact Form
+## Deployment Notes
 
-The form is ready for integration. Open `src/components/ContactForm.jsx` and follow the integration comments inside the `handleSubmit` function.
+### Vercel (Recommended)
 
-**Option A — Formspree:**
-1. Create a form at [formspree.io](https://formspree.io).
-2. Copy your form endpoint URL.
-3. Open `src/data/siteConfig.js` and set:
-```js
-formEndpoint: "https://formspree.io/f/YOUR_FORM_ID",
-```
+1. Import the GitHub repository at [vercel.com/new](https://vercel.com/new)
+2. Vercel auto-detects Vite. Settings if needed:
+   - **Framework Preset:** Vite
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+3. Deploy
 
-**Option B — Netlify Forms:**
-Add `name="contact" data-netlify="true"` to the `<form>` element in `ContactForm.jsx`.
+The `vercel.json` file handles SPA client-side routing.
 
-**Option C — EmailJS:**
-Follow the EmailJS SDK setup and call `emailjs.send(...)` inside the `handleSubmit` function where the placeholder comment is.
+### Netlify (Alternative)
+
+1. Connect the repository at [app.netlify.com](https://app.netlify.com)
+2. Settings:
+   - **Build Command:** `npm run build`
+   - **Publish Directory:** `dist`
+
+The `netlify.toml` file handles SPA client-side routing.
+
+---
+
+## Future Production Deployment
+
+The final domain is `nexvoragroup-pa.com`, registered and managed through **Squarespace**.
+
+The custom React/Vite site is **not hosted through Squarespace**. Squarespace is used only for domain/DNS management.
+
+### Steps to go live:
+
+1. Deploy to Vercel (see above)
+2. In Vercel → Settings → Domains → add `nexvoragroup-pa.com` and `www.nexvoragroup-pa.com`
+3. Vercel will display the required DNS records
+4. In Squarespace → Domains → DNS Settings → update records:
+   - **A record** `@` → Vercel IP
+   - **CNAME** `www` → `cname.vercel-dns.com`
+5. Wait for DNS propagation (10 min – 24 hrs)
+6. Verify `https://nexvoragroup-pa.com` and `https://www.nexvoragroup-pa.com`
+
+> Always copy the exact DNS values from your Vercel dashboard — do not use hardcoded values.
 
 ---
 
 ## Future Improvements
 
-- Add a real company logo to replace the text logo
-- Connect the contact form to a backend service
-- Add WhatsApp number once confirmed
-- Set up Google Analytics once GA4 property is created
-- Add a cookie/privacy notice if required for compliance
-- Consider adding an SSL certificate notice page or redirect rules
+- [ ] Connect contact form to Formspree or EmailJS
+- [ ] Add real WhatsApp number
+- [ ] Set up Google Analytics 4
+- [ ] Deploy to Vercel
+- [ ] Connect custom domain via Squarespace DNS
+- [ ] Replace Unsplash image URLs with locally optimized images
+- [ ] Add screenshots to `docs/screenshots/`
+- [ ] Add client testimonial after approval
+- [ ] Add real company logo when available
 
 ---
 
-## License
+## Developer Role
 
-Private project. All rights reserved. © 2026 Nexvora Group.
+**Developer:** Aleh Sitsko
+
+**Role:** Requirements gathering, business positioning review, content structure, frontend development, responsive UI implementation, contact form UI, SEO setup, configuration architecture, deployment preparation, and project documentation.
+
+**Project type:** Freelance client project
+
+---
+
+*© 2026 Nexvora Group. All rights reserved.*

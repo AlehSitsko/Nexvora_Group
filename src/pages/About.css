@@ -113,9 +113,21 @@
   font-size: var(--font-size-xs);
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--color-accent);
+  color: var(--color-text-muted);
   min-width: 28px;
   padding-top: 2px;
+}
+
+.principles-list__icon {
+  color: var(--color-accent);
+  min-width: 20px;
+}
+
+.principles-list__icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  margin-top: 1px;
 }
 
 .principles-list__body {

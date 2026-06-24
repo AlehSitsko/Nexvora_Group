@@ -216,12 +216,14 @@ export default function Home() {
                 <svg className="cta-contact-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 <span className="cta-contact-item__value">{location}</span>
               </div>
-              {whatsappNumber ? (
-                <div className="cta-contact-item">
-                  <svg className="cta-contact-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <div className="cta-contact-item">
+                <svg className="cta-contact-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                {whatsappNumber ? (
                   <a href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`} className="cta-contact-item__value" target="_blank" rel="noopener noreferrer">{whatsappNumber}</a>
-                </div>
-              ) : null}
+                ) : (
+                  <span className="cta-contact-item__value cta-contact-item__muted">WhatsApp available upon request</span>
+                )}
+              </div>
             </div>
           </div>
         </div>

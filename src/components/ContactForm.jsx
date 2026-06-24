@@ -41,22 +41,14 @@ export default function ContactForm() {
 
     setStatus('sending');
 
-    // ── Backend integration point ──────────────────────────────────────
-    // Replace the placeholder below to connect to a real backend.
+    // ── PREVIEW-ONLY BEHAVIOR ─────────────────────────────────────────
+    // This form does NOT send real emails in the current preview build.
+    // It simulates a successful submission for client preview purposes.
     //
-    // Option A — Formspree:
-    //   const res = await fetch(siteConfig.formEndpoint, {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    //     body: JSON.stringify(fields),
-    //   });
-    //   if (!res.ok) throw new Error('Submission failed');
-    //
-    // Option B — Netlify Forms:
-    //   Add name="contact" netlify to the <form> element, and encode body as URLSearchParams.
-    //
-    // Option C — EmailJS:
-    //   emailjs.send(serviceId, templateId, fields, publicKey)
+    // To connect a real backend, set siteConfig.formEndpoint to one of:
+    //   Option A — Formspree:  "https://formspree.io/f/YOUR_FORM_ID"
+    //   Option B — Netlify Forms: add name="contact" netlify to <form>
+    //   Option C — EmailJS: call emailjs.send(...) in the block below
     // ──────────────────────────────────────────────────────────────────
 
     if (siteConfig.formEndpoint) {
@@ -73,7 +65,7 @@ export default function ContactForm() {
         setStatus('error');
       }
     } else {
-      // Placeholder behavior — no endpoint configured yet
+      // Preview-only: simulates submission without making a network request
       setTimeout(() => {
         setStatus('success');
         setFields(INITIAL_STATE);
@@ -210,7 +202,7 @@ export default function ContactForm() {
         className="btn btn--primary btn--lg contact-form__submit"
         disabled={status === 'sending'}
       >
-        {status === 'sending' ? 'Sending…' : 'Send Inquiry'}
+        {status === 'sending' ? 'Sending…' : 'Submit Inquiry'}
       </button>
     </form>
   );

@@ -3,6 +3,26 @@ import ContactForm from '../components/ContactForm';
 import { siteConfig } from '../data/siteConfig';
 import './Contact.css';
 
+const IconEmail = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+  </svg>
+);
+
+const IconPin = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+    <circle cx="12" cy="10" r="3"/>
+  </svg>
+);
+
+const IconChat = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+);
+
 export default function Contact() {
   const { seo, email, location, whatsappNumber } = siteConfig;
 
@@ -32,7 +52,7 @@ export default function Contact() {
             <p className="section-label">Contact Information</p>
             <div className="divider" />
             <h2 className="section-title contact-info__title">
-              Let's Discuss a<br /> Partnership
+              Let's Discuss a Partnership
             </h2>
             <p className="contact-info__desc">
               Please contact us to discuss wholesale account opportunities,
@@ -41,20 +61,17 @@ export default function Contact() {
 
             <div className="contact-info__list">
               <div className="contact-info__item">
-                <div className="contact-info__item-icon" aria-hidden="true">✉</div>
+                <div className="contact-info__item-icon"><IconEmail /></div>
                 <div>
                   <p className="contact-info__item-label">Email</p>
-                  <a
-                    href={`mailto:${email}`}
-                    className="contact-info__item-value"
-                  >
+                  <a href={`mailto:${email}`} className="contact-info__item-value contact-info__item-link">
                     {email}
                   </a>
                 </div>
               </div>
 
               <div className="contact-info__item">
-                <div className="contact-info__item-icon" aria-hidden="true">📍</div>
+                <div className="contact-info__item-icon"><IconPin /></div>
                 <div>
                   <p className="contact-info__item-label">Location</p>
                   <p className="contact-info__item-value">{location}</p>
@@ -62,7 +79,7 @@ export default function Contact() {
               </div>
 
               <div className="contact-info__item">
-                <div className="contact-info__item-icon" aria-hidden="true">💬</div>
+                <div className="contact-info__item-icon"><IconChat /></div>
                 <div>
                   <p className="contact-info__item-label">WhatsApp</p>
                   {whatsappNumber ? (
@@ -75,14 +92,16 @@ export default function Contact() {
                       {whatsappNumber}
                     </a>
                   ) : (
-                    <p className="contact-info__item-value contact-info__placeholder">
-                      [Add WhatsApp Number Here]
+                    // When whatsappNumber is empty, show neutral text — not a raw placeholder
+                    <p className="contact-info__item-value contact-info__item-muted">
+                      Available upon request
                     </p>
                   )}
                 </div>
               </div>
             </div>
 
+            {/* WhatsApp button — shown only when number is configured */}
             {whatsappNumber && (
               <a
                 href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
@@ -90,15 +109,13 @@ export default function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span aria-hidden="true">💬</span>
                 Message on WhatsApp
               </a>
             )}
 
             <div className="contact-info__note">
               <p>
-                We typically respond to business inquiries within one business
-                day.
+                We typically respond to business inquiries within one business day.
               </p>
             </div>
           </aside>
@@ -106,7 +123,7 @@ export default function Contact() {
           {/* Form */}
           <div className="contact-form-wrapper">
             <div className="contact-form-card">
-              <h2 className="contact-form-card__title">Send an Inquiry</h2>
+              <h2 className="contact-form-card__title">Partnership Contact Form</h2>
               <p className="contact-form-card__desc">
                 Fill out the form below and we will review your message and
                 respond as soon as possible.
