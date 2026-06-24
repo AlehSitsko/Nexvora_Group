@@ -45,8 +45,11 @@
   .map-commitments {
     grid-template-columns: 1fr;
   }
+}
 
-  .map-final__card {
-    padding: var(--space-8);
+@media (max-width: 600px) {
+  .map-intro,
+  .map-final__content {
+    max-width: 100%;
   }
 }

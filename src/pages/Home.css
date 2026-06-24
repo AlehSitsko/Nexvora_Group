@@ -205,12 +205,6 @@ a.cta-contact-item__value:hover {
   }
 }
 
-@media (max-width: 600px) {
-  .hero {
-    min-height: 560px;
-  }
-}
-
 @media (max-width: 900px) {
   .cta-section {
     grid-template-columns: 1fr;
@@ -218,8 +212,31 @@ a.cta-contact-item__value:hover {
 }
 
 @media (max-width: 600px) {
+  .hero {
+    min-height: 520px;
+  }
+
+  .hero__content {
+    padding-top: calc(var(--header-height) + 1rem);
+    padding-bottom: var(--space-12);
+  }
+
+  .hero__headline {
+    font-size: 1.75rem;
+  }
+
+  .hero__sub {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-8);
+  }
+
   .hero__actions {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 }

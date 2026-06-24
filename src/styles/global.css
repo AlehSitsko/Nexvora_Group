@@ -360,4 +360,13 @@ button {
   .section-title {
     font-size: var(--font-size-xl);
   }
+
+  .section {
+    padding: var(--space-12) 0;
+  }
+
+  .btn--lg {
+    padding: 0.8rem 1.5rem;
+    font-size: var(--font-size-sm);
+  }
 }

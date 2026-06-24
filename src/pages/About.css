@@ -157,4 +157,31 @@
     aspect-ratio: 16/9;
     order: -1;
   }
+
+  .principles-list__item {
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 600px) {
+  .page-hero__content {
+    padding-top: calc(var(--header-height) + 1.5rem);
+  }
+
+  .page-hero {
+    padding-bottom: var(--space-10);
+    min-height: 38vh;
+  }
+
+  .page-hero__sub {
+    font-size: var(--font-size-base);
+  }
+
+  .principles-list__item {
+    gap: var(--space-3);
+  }
+
+  .principles-list__num {
+    min-width: 22px;
+  }
 }

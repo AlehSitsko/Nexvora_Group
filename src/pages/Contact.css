@@ -152,6 +152,15 @@
 
 @media (max-width: 600px) {
   .contact-form-card {
-    padding: var(--space-6);
+    padding: var(--space-5);
+    border-radius: var(--radius-md);
+  }
+
+  .contact-info__title {
+    font-size: var(--font-size-xl);
+  }
+
+  .contact-layout {
+    gap: var(--space-8);
   }
 }
