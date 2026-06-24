@@ -298,15 +298,20 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
-  min-width: 22px;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
   border-radius: 50%;
-  background: var(--color-accent);
-  color: white;
-  font-size: 11px;
+  border: 1.5px solid var(--color-accent);
+  color: var(--color-accent);
+  font-size: 10px;
   font-weight: 700;
-  margin-top: 1px;
+  margin-top: 2px;
+}
+
+.check-list--light li::before {
+  border-color: #4db88d;
+  color: #4db88d;
 }
 
 /* ── Divider ── */

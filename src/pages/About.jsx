@@ -112,19 +112,19 @@ export default function About() {
               relationship and business decision.
             </p>
           </div>
-          <div className="principles-grid">
-            {PRINCIPLES.map((p) => (
-              <div key={p.title} className="principle-card">
-                <div className="principle-card__icon" aria-hidden="true">
-                  {p.icon}
+          <ol className="principles-list">
+            {PRINCIPLES.map((p, i) => (
+              <li key={p.title} className="principles-list__item">
+                <span className="principles-list__num" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="principles-list__body">
+                  <h3 className="principles-list__title">{p.title}</h3>
+                  <p className="principles-list__desc">{p.description}</p>
                 </div>
-                <div>
-                  <h3 className="principle-card__title">{p.title}</h3>
-                  <p className="principle-card__desc">{p.description}</p>
-                </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
     </>

@@ -92,49 +92,44 @@
   margin-bottom: var(--space-12);
 }
 
-.principles-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
+.principles-list {
+  list-style: none;
   max-width: 800px;
 }
 
-.principle-card {
+.principles-list__item {
   display: flex;
-  align-items: flex-start;
-  gap: var(--space-5);
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6) var(--space-8);
-  border: 1px solid var(--color-border);
-  transition: box-shadow var(--transition), transform var(--transition);
+  align-items: baseline;
+  gap: var(--space-8);
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.principle-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateX(4px);
+.principles-list__item:first-child {
+  border-top: 1px solid var(--color-border);
 }
 
-.principle-card__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  border-radius: var(--radius-md);
-  background: var(--color-accent-light);
-  font-size: 1.35rem;
+.principles-list__num {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  min-width: 28px;
+  padding-top: 2px;
 }
 
-.principle-card__title {
+.principles-list__body {
+  flex: 1;
+}
+
+.principles-list__title {
   font-size: var(--font-size-base);
   font-weight: 700;
   color: var(--color-text-dark);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
 }
 
-.principle-card__desc {
+.principles-list__desc {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   line-height: 1.65;

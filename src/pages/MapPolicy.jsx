@@ -84,18 +84,19 @@ export default function MapPolicy() {
       </section>
 
       {/* Final statement */}
-      <section className="section section--gray">
+      <section className="section">
         <div className="container map-final">
-          <div className="map-final__card">
-            <div className="map-final__icon" aria-hidden="true">🛡️</div>
-            <h2 className="section-title" style={{ marginBottom: '1rem' }}>
+          <div className="map-final__content">
+            <p className="section-label">Our Commitment</p>
+            <div className="divider" />
+            <h2 className="section-title">
               Long-Term Cooperation. Responsible Retail.
             </h2>
-            <p>
+            <p className="map-final__text">
               Nexvora Group is focused on long-term cooperation and responsible
               retail operations.
             </p>
-            <p style={{ marginTop: '1rem' }}>
+            <p className="map-final__text">
               If a supplier or brand representative has a concern regarding
               pricing, product representation, or policy compliance, we
               encourage direct communication so the matter can be reviewed

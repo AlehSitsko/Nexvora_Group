@@ -4,27 +4,40 @@ import ValueCard from '../components/ValueCard';
 import { siteConfig } from '../data/siteConfig';
 import './Home.css';
 
+const IconHandshake = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+);
+const IconScale = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 9l9-6 9 6"/><path d="M6 12H3l3 6h0a3 3 0 0 0 6 0h0l3-6h-3"/><path d="M18 12h-3l3 6h0a3 3 0 0 0 6 0h0l3-6h-3" transform="translate(-6 0)"/></svg>
+);
+const IconShield = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+);
+const IconCheck = () => (
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+);
+
 const VALUES = [
   {
-    icon: '🤝',
+    svg: <IconHandshake />,
     title: 'Long-Term Relationships',
     description:
       'We build strong supplier relationships through consistency, trust, and professional communication.',
   },
   {
-    icon: '⚖️',
+    svg: <IconScale />,
     title: 'MAP Compliance',
     description:
       'We respect brand pricing policies and help maintain pricing consistency across authorized channels.',
   },
   {
-    icon: '🛡️',
+    svg: <IconShield />,
     title: 'Brand Protection',
     description:
       "We take brand reputation seriously and represent every partner's products in a responsible way.",
   },
   {
-    icon: '✅',
+    svg: <IconCheck />,
     title: 'Authorized Channels',
     description:
       'We work within approved retail channels and respect supplier requirements and brand guidelines.',
@@ -135,7 +148,7 @@ export default function Home() {
           </div>
           <div className="grid-4 values-grid">
             {VALUES.map((v) => (
-              <ValueCard key={v.title} {...v} />
+              <ValueCard key={v.title} svg={v.svg} title={v.title} description={v.description} />
             ))}
           </div>
         </div>
@@ -177,53 +190,39 @@ export default function Home() {
       <section className="section">
         <div className="container">
           <div className="cta-section">
-            <p className="section-label">Get In Touch</p>
-            <div className="divider" />
-            <h2 className="section-title cta-section__title">
-              Let's Build a Strong Partnership
-            </h2>
-            <p className="section-subtitle cta-section__sub">
-              We welcome the opportunity to discuss how we can work together to
-              support your brand's success.
-            </p>
-            <div className="cta-section__contact">
-              <div className="cta-section__contact-item">
-                <span className="cta-section__contact-label">Email</span>
-                <a
-                  href={`mailto:${email}`}
-                  className="cta-section__contact-value"
-                >
-                  {email}
-                </a>
-              </div>
-              <div className="cta-section__contact-item">
-                <span className="cta-section__contact-label">Location</span>
-                <span className="cta-section__contact-value">{location}</span>
-              </div>
-              <div className="cta-section__contact-item">
-                <span className="cta-section__contact-label">WhatsApp</span>
-                {whatsappNumber ? (
-                  <a
-                    href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`}
-                    className="cta-section__contact-value"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {whatsappNumber}
-                  </a>
-                ) : (
-                  <span className="cta-section__contact-value cta-section__placeholder">
-                    [Add WhatsApp Number Here]
-                  </span>
-                )}
-              </div>
+            <div className="cta-section__left">
+              <p className="section-label">Get In Touch</p>
+              <div className="divider" />
+              <h2 className="section-title">
+                Let's Build a Strong Partnership
+              </h2>
+              <p className="section-subtitle" style={{ marginBottom: '2rem' }}>
+                We welcome the opportunity to discuss how we can work together to
+                support your brand's success.
+              </p>
+              <button
+                className="btn btn--primary btn--lg"
+                onClick={() => navigate('/contact')}
+              >
+                Contact Us
+              </button>
             </div>
-            <button
-              className="btn btn--primary btn--lg"
-              onClick={() => navigate('/contact')}
-            >
-              Contact Us
-            </button>
+            <div className="cta-section__right">
+              <div className="cta-contact-item">
+                <svg className="cta-contact-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <a href={`mailto:${email}`} className="cta-contact-item__value">{email}</a>
+              </div>
+              <div className="cta-contact-item">
+                <svg className="cta-contact-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span className="cta-contact-item__value">{location}</span>
+              </div>
+              {whatsappNumber ? (
+                <div className="cta-contact-item">
+                  <svg className="cta-contact-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  <a href={`https://wa.me/${whatsappNumber.replace(/\D/g, '')}`} className="cta-contact-item__value" target="_blank" rel="noopener noreferrer">{whatsappNumber}</a>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </section>
