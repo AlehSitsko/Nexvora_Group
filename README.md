@@ -13,7 +13,14 @@ A responsive B2B business website demo for a Pennsylvania-based wholesale purcha
 Screenshots will be added after the client preview is finalized — see `docs/screenshots/`.
 
 ---
+## Developer / Portfolio
 
+Built by **Aleh Sitsko** as a client-style business website demo and portfolio project.
+
+* Portfolio: [alehsitsko.dev](https://alehsitsko.dev)
+* GitHub: [github.com/AlehSitsko](https://github.com/AlehSitsko)
+* LinkedIn: [linkedin.com/in/alehsitsko](https://www.linkedin.com/in/alehsitsko/)
+---
 ## Project Status
 
 The project is currently prepared as a client preview and portfolio-ready frontend demo. It is deployed on Vercel for review purposes only. The final production domain has not been connected yet.
