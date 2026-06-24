@@ -1,24 +1,27 @@
 # Nexvora Group Website
 
-A responsive B2B business website for a Pennsylvania-based wholesale purchasing and e-commerce retail company, focused on supplier partnerships, MAP compliance, brand protection, and professional contact conversion.
+A responsive B2B business website demo for a Pennsylvania-based wholesale purchasing and e-commerce retail company focused on supplier partnerships, MAP compliance, brand protection, and professional contact conversion.
 
 ---
 
-## Live Preview
+## Live Demo
 
-> Preview deployment coming soon via Vercel.
-> Screenshots will be added after preview deployment — see `docs/screenshots/`.
+**[https://nexvora-group.vercel.app/](https://nexvora-group.vercel.app/)**
+
+**Status:** Client preview / portfolio-ready frontend demo
+
+Screenshots will be added after the client preview is finalized — see `docs/screenshots/`.
 
 ---
 
 ## Project Status
 
-**Preview-ready.** The site is complete as a client-facing preview and portfolio project.
+The project is currently prepared as a client preview and portfolio-ready frontend demo. It is deployed on Vercel for review purposes only. The final production domain has not been connected yet.
 
-- Contact form uses **frontend-only preview behavior** (no real emails sent yet)
-- WhatsApp number is a placeholder — will be activated when the client provides a number
-- Google Analytics ID is a placeholder — ready to activate when the client provides a GA4 ID
-- Domain `nexvoragroup-pa.com` is registered. Production deployment to Vercel is planned as the next step
+- Contact form uses **frontend-only preview behavior** — does not send real emails yet
+- WhatsApp number is configuration-ready — will activate when the client provides a number
+- Google Analytics ID is configuration-ready — will activate when the client provides a GA4 ID
+- Domain `nexvoragroup-pa.com` is registered. Production deployment and domain connection are planned as a future step
 
 ---
 
@@ -30,20 +33,31 @@ The site avoids all consumer e-commerce language and visuals. No product cards, 
 
 ---
 
+## Developer Role
+
+**Developer:** Aleh Sitsko
+
+**Role:** Requirements gathering, business positioning review, content structure, frontend development, responsive UI implementation, contact form UI, SEO setup, configuration architecture, demo deployment preparation, and project documentation.
+
+**Project type:** Freelance-style client preview project — built for client review and portfolio permission.
+
+---
+
 ## Features
 
 - Multi-page responsive layout — Home, About, MAP Policy, Contact
 - Dark corporate hero section with professional city background
 - Supplier-focused B2B messaging throughout
 - MAP & Brand Protection dedicated page
-- Contact inquiry form (UI complete, ready for backend integration)
-- WhatsApp CTA — activates automatically when number is added to config
-- Google Analytics — activates automatically when GA4 ID is added to config
+- Contact form UI with full validation
+- Frontend-only preview submit behavior
+- WhatsApp-ready configuration (activates when number is provided)
+- Google Analytics-ready configuration (activates when GA4 ID is provided)
 - SEO meta titles and descriptions per page
 - Open Graph metadata
 - Reusable React components
 - Single config file for all editable content
-- Vercel and Netlify deployment-ready
+- Vercel demo deployment
 
 ---
 
@@ -51,10 +65,11 @@ The site avoids all consumer e-commerce language and visuals. No product cards, 
 
 | Technology | Purpose |
 |---|---|
-| React 18 | UI framework |
+| React 19 | UI framework |
 | Vite | Build tool and dev server |
 | React Router DOM | Client-side routing |
 | Plain CSS with CSS Variables | Styling — no heavy UI framework |
+| Vercel | Demo deployment |
 
 ---
 
@@ -65,7 +80,7 @@ The site avoids all consumer e-commerce language and visuals. No product cards, 
 | Home | `/` | Hero, Who We Are, Values, Wholesale Partnerships, CTA |
 | About | `/about` | Company story and business principles |
 | MAP Policy | `/map-policy` | MAP compliance and brand protection policy |
-| Contact | `/contact` | Contact info sidebar and inquiry form |
+| Contact | `/contact` | Contact information sidebar and partnership inquiry form |
 
 ---
 
@@ -93,7 +108,7 @@ src/
 public/
   favicon.svg
 docs/
-  screenshots/       — Screenshots added after deployment
+  screenshots/       — Screenshots to be added after client review
 index.html           — OG tags and base meta
 vercel.json          — SPA routing for Vercel
 netlify.toml         — SPA routing for Netlify
@@ -138,7 +153,7 @@ npm run preview
 The contact form currently uses **frontend-only preview behavior**.
 
 - It validates all required fields on the client side
-- On submit, it simulates a short delay and shows a success message
+- On submit, it simulates a short delay and displays a success message
 - It does **not** send any real emails
 - It does **not** make any network requests when `formEndpoint` is empty
 
@@ -147,7 +162,7 @@ This is intentional for the client preview stage. The form is prepared for futur
 Future integration options:
 - **Formspree** — set `formEndpoint` in `siteConfig.js` to your Formspree URL
 - **Netlify Forms** — add `data-netlify="true"` to the form element
-- **EmailJS** — add SDK call inside the `handleSubmit` function in `ContactForm.jsx`
+- **EmailJS** — add SDK call inside `handleSubmit` in `ContactForm.jsx`
 - **Custom backend** — replace the fetch call with your own endpoint
 
 ---
@@ -161,109 +176,46 @@ All editable site content lives in [`src/data/siteConfig.js`](src/data/siteConfi
 | `companyName` | Company display name |
 | `email` | Contact email address |
 | `location` | Company location |
-| `whatsappNumber` | WhatsApp number — leave `""` to hide button |
-| `googleAnalyticsId` | GA4 Measurement ID — leave `""` to disable |
-| `formEndpoint` | Form backend URL — leave `""` for preview behavior |
+| `whatsappNumber` | WhatsApp number — leave `""` to show "Available upon request" |
+| `googleAnalyticsId` | GA4 Measurement ID — leave `""` to disable analytics |
+| `formEndpoint` | Form backend URL — leave `""` for preview-only behavior |
 | `navLinks` | Navigation menu items |
 | `seo` | Per-page title and meta description |
 
----
+**WhatsApp:** If `whatsappNumber` is empty, the site displays "Available upon request" — no broken links or raw placeholders.
 
-## How to Replace WhatsApp Number
+**Analytics:** Analytics loads only when a valid `googleAnalyticsId` is provided.
 
-1. Open `src/data/siteConfig.js`
-2. Set `whatsappNumber` to the full international number:
-
-```js
-whatsappNumber: "+12155550100",
-```
-
-The WhatsApp button and link will appear automatically across the site.
-
-If left empty (`""`), the site shows **"WhatsApp available upon request"** — no broken links or raw placeholders.
+**Form:** If `formEndpoint` is empty, the form uses preview-only behavior and does not send real emails.
 
 ---
 
-## How to Add Google Analytics
+## Demo Deployment Notes
 
-1. Create a Google Analytics 4 property at [analytics.google.com](https://analytics.google.com)
-2. Copy your Measurement ID (format: `G-XXXXXXXXXX`)
-3. Open `src/data/siteConfig.js` and set:
+This project is deployed as a Vercel demo preview.
 
-```js
-googleAnalyticsId: "G-XXXXXXXXXX",
-```
+**Live Demo:** [https://nexvora-group.vercel.app/](https://nexvora-group.vercel.app/)
 
-Analytics loads automatically. No other changes needed.
-
----
-
-## Deployment Notes
-
-### Vercel (Recommended)
-
-1. Import the GitHub repository at [vercel.com/new](https://vercel.com/new)
-2. Vercel auto-detects Vite. Settings if needed:
-   - **Framework Preset:** Vite
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-3. Deploy
-
-The `vercel.json` file handles SPA client-side routing.
-
-### Netlify (Alternative)
-
-1. Connect the repository at [app.netlify.com](https://app.netlify.com)
-2. Settings:
-   - **Build Command:** `npm run build`
-   - **Publish Directory:** `dist`
-
-The `netlify.toml` file handles SPA client-side routing.
-
----
-
-## Future Production Deployment
-
-The final domain is `nexvoragroup-pa.com`, registered and managed through **Squarespace**.
-
-The custom React/Vite site is **not hosted through Squarespace**. Squarespace is used only for domain/DNS management.
-
-### Steps to go live:
-
-1. Deploy to Vercel (see above)
-2. In Vercel → Settings → Domains → add `nexvoragroup-pa.com` and `www.nexvoragroup-pa.com`
-3. Vercel will display the required DNS records
-4. In Squarespace → Domains → DNS Settings → update records:
-   - **A record** `@` → Vercel IP
-   - **CNAME** `www` → `cname.vercel-dns.com`
-5. Wait for DNS propagation (10 min – 24 hrs)
-6. Verify `https://nexvoragroup-pa.com` and `https://www.nexvoragroup-pa.com`
-
-> Always copy the exact DNS values from your Vercel dashboard — do not use hardcoded values.
+This demo URL is used for client review and portfolio presentation. It is not the final production domain.
 
 ---
 
 ## Future Improvements
 
-- [ ] Connect contact form to Formspree or EmailJS
-- [ ] Add real WhatsApp number
-- [ ] Set up Google Analytics 4
-- [ ] Deploy to Vercel
-- [ ] Connect custom domain via Squarespace DNS
-- [ ] Replace Unsplash image URLs with locally optimized images
+- [ ] Connect contact form to real email service (Formspree, Netlify Forms, or EmailJS)
+- [ ] Add final WhatsApp number
+- [ ] Add Google Analytics Measurement ID
+- [ ] Add optimized local brand images
+- [ ] Add final client-approved company details
 - [ ] Add screenshots to `docs/screenshots/`
 - [ ] Add client testimonial after approval
-- [ ] Add real company logo when available
+- [ ] Prepare final production deployment if requested by client
 
 ---
 
-## Developer Role
+## Portfolio Summary
 
-**Developer:** Aleh Sitsko
-
-**Role:** Requirements gathering, business positioning review, content structure, frontend development, responsive UI implementation, contact form UI, SEO setup, configuration architecture, deployment preparation, and project documentation.
-
-**Project type:** Freelance client project
+Responsive B2B business website demo for a Pennsylvania-based wholesale purchasing and e-commerce retail company, focused on supplier partnerships, MAP compliance, brand protection, contact conversion, and demo deployment preparation.
 
 ---
 
