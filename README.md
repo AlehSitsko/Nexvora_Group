@@ -10,7 +10,23 @@ A responsive B2B business website demo for a Pennsylvania-based wholesale purcha
 
 **Status:** Client preview / portfolio-ready frontend demo
 
-Screenshots will be added after the client preview is finalized — see `docs/screenshots/`.
+---
+
+## Screenshots
+
+Captured from the live site at [nexvora-group.vercel.app](https://nexvora-group.vercel.app/).
+
+| Home | MAP Policy |
+|---|---|
+| ![Home — Professional Wholesale & E-Commerce Retail Partner](docs/screenshots/home.jpg) | ![MAP & Brand Protection Policy](docs/screenshots/map-policy.jpg) |
+
+| About | Contact |
+|---|---|
+| ![About Nexvora Group](docs/screenshots/about.jpg) | ![Partnership contact form](docs/screenshots/contact.jpg) |
+
+<p align="center">
+  <img src="docs/screenshots/mobile.jpg" alt="Responsive mobile layout" width="280" />
+</p>
 
 ---
 ## Developer / Portfolio
@@ -115,7 +131,7 @@ src/
 public/
   favicon.svg
 docs/
-  screenshots/       — Screenshots to be added after client review
+  screenshots/       — Live-site screenshots (home, about, MAP policy, contact, mobile)
 index.html           — OG tags and base meta
 vercel.json          — SPA routing for Vercel
 netlify.toml         — SPA routing for Netlify
@@ -214,7 +230,7 @@ This demo URL is used for client review and portfolio presentation. It is not th
 - [ ] Add Google Analytics Measurement ID
 - [ ] Add optimized local brand images
 - [ ] Add final client-approved company details
-- [ ] Add screenshots to `docs/screenshots/`
+- [x] Add screenshots to `docs/screenshots/`
 - [ ] Add client testimonial after approval
 - [ ] Prepare final production deployment if requested by client
 
