@@ -3,7 +3,6 @@
 **Developer:** Aleh Sitsko
 **Project Type:** Freelance-style client preview / portfolio project
 **Estimated Market Value:** $1,500–$2,500
-**Arrangement:** Built as a free project in exchange for client feedback, testimonial, and portfolio usage permission
 
 ---
 
